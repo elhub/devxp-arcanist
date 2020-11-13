@@ -29,9 +29,6 @@
     "php": {
       "type": "php"
     },
-    "phpcs": {
-      "type": "phpcs"
-    },
     "phutil-library": {
       "type": "phutil-library",
       "include": "(\\.php$)"

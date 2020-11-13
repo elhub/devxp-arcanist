@@ -3,32 +3,32 @@
 /**
  * Lints Kotlin source files using the "detekt" tool.
  */
-final class DetektLinter extends ArcanistExternalLinter {
+final class YamlLinter extends ArcanistExternalLinter {
 
   private $config = null;
 
   public function getInfoName() {
-    return 'Detekt Linter';
+    return 'Yamllint';
   }
 
   public function getInfoDescription() {
-    return pht('Checks Kotlin files');
+    return pht('Checks Yaml files');
   }
 
   public function getInfoURI() {
-    return 'https://github.com/arturbosch/detekt';
+    return 'https://github.com/adrienverge/yamllint';
   }
 
   public function getLinterName() {
-    return 'DETEKT';
+    return 'yamllint';
   }
 
   public function getLinterConfigurationName() {
-    return 'detekt';
+    return 'yamllint';
   }
 
   public function getDefaultBinary() {
-    return 'detekt';
+    return 'yamllint';
   }
 
   public function getVersion() {
@@ -40,16 +40,14 @@ final class DetektLinter extends ArcanistExternalLinter {
   }
 
   protected function getMandatoryFlags() {
-    return array('-i');
+    return array('-f=parsable');
   }
 
   protected function parseLinterOutput($path, $err, $stdout, $stderr) {
     $lines = phutil_split_lines($stdout, false);
 
-    // [ERROR] /path/to/file.java:31: Message text [Indentation]
-    // [WARN] /path/to/file.java:31:10: Message text [Indentation]
-    $regex = '/^\s*(?P<type>.*) - \[(?P<message>.*)\] at (?P<path>.*):(?P<line>\d+):(?P<char>\d+)$/';
-    $severity = 'WARN';
+    // install.yml:2:7: [error] syntax error: mapping values are not allowed here
+    $regex = '/^(?P<path>.*):(?P<line>\d+):(?P<char>\d+): \[(?P<severity>.*)\] (?P<type>.*): (?P<message>.*)$/';
     $messages = array();
     foreach ($lines as $line) {
       $matches = null;
@@ -63,7 +61,7 @@ final class DetektLinter extends ArcanistExternalLinter {
         $message->setCode($matches['type']);
         $message->setName($this->getLinterName());
         $message->setDescription($matches['message']);
-        $message->setSeverity($this->getMatchSeverity($severity));
+        $message->setSeverity($this->getMatchSeverity($matches['severity']));
         $messages[] = $message;
       }
     }
@@ -73,8 +71,8 @@ final class DetektLinter extends ArcanistExternalLinter {
 
   private function getMatchSeverity($name) {
     $map = array(
-      'ERROR' => ArcanistLintSeverity::SEVERITY_ERROR,
-      'WARN'  => ArcanistLintSeverity::SEVERITY_WARNING,
+      'error' => ArcanistLintSeverity::SEVERITY_ERROR,
+      'warn'  => ArcanistLintSeverity::SEVERITY_WARNING,
     );
 
     if (array_key_exists($name, $map)) {
