@@ -1,3 +1,3 @@
 <?php
 
-phutil_register_library('dev-tools', __FILE__);
+phutil_register_library('devxp', __FILE__);

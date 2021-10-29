@@ -1,13 +1,13 @@
-# dev-tools-arcanist
+# devxp-arcanist
 
-<!-- PROJECT SHIELDS -->
-![TeamCity Build](https://teamcity.elhub.cloud/app/rest/builds/buildType:(id:Tools_DevToolsArcanist_AutoRelease)/statusIcon)
-[![Quality Gate Status](https://sonar.elhub.cloud/api/project_badges/measure?project=no.elhub.tools%3Adev-tools-arcanist&metric=alert_status)](https://sonar.elhub.cloud/dashboard?id=no.elhub.tools%3Adev-tools-arcanist)
-[![Lines of Code](https://sonar.elhub.cloud/api/project_badges/measure?project=no.elhub.tools%3Adev-tools-arcanist&metric=ncloc)](https://sonar.elhub.cloud/dashboard?id=no.elhub.tools%3Adev-tools-arcanist)
-
-[![Vulnerabilities](https://sonar.elhub.cloud/api/project_badges/measure?project=no.elhub.tools%3Adev-tools-arcanist&metric=vulnerabilities)](https://sonar.elhub.cloud/dashboard?id=no.elhub.tools%3Adev-tools-arcanist)
-[![Bugs](https://sonar.elhub.cloud/api/project_badges/measure?project=no.elhub.tools%3Adev-tools-arcanist&metric=bugs)](https://sonar.elhub.cloud/dashboard?id=no.elhub.tools%3Adev-tools-arcanist)
-[![Code Smells](https://sonar.elhub.cloud/api/project_badges/measure?project=no.elhub.tools%3Adev-tools-arcanist&metric=code_smells)](https://sonar.elhub.cloud/dashboard?id=no.elhub.tools%3Adev-tools-arcanist)
+[<img src="https://img.shields.io/badge/repo-github-blue" alt="">](https://github.com/elhub/devxp-arcanist)
+[<img src="https://img.shields.io/badge/issues-jira-orange" alt="">](https://jira.elhub.cloud/issues/?jql=project%20%3D%20%22Team%20Dev%22%20AND%20component%20%3D%20devxp-arcanist%20AND%20status%20!%3D%20Done)
+[<img src="https://teamcity.elhub.cloud/app/rest/builds/buildType:(id:DevXp_DevXpArcanist_AutoRelease)/statusIcon" alt="">](https://teamcity.elhub.cloud/project/DevXp_DevXpArcanist?mode=builds#all-projects)
+[<img src="https://sonar.elhub.cloud/api/project_badges/measure?project=no.elhub.devxp%3Adevxp-arcanist&metric=alert_status" alt="">](https://sonar.elhub.cloud/dashboard?id=no.elhub.devxp%3Adevxp-arcanist)
+[<img src="https://sonar.elhub.cloud/api/project_badges/measure?project=no.elhub.devxp%3Adevxp-arcanist&metric=ncloc" alt="">](https://sonar.elhub.cloud/dashboard?id=no.elhub.devxp%3Adevxp-arcanist)
+[<img src="https://sonar.elhub.cloud/api/project_badges/measure?project=no.elhub.devxp%3Adevxp-arcanist&metric=bugs" alt="">](https://sonar.elhub.cloud/dashboard?id=no.elhub.devxp%3Adevxp-arcanist)
+[<img src="https://sonar.elhub.cloud/api/project_badges/measure?project=no.elhub.devxp%3Adevxp-arcanist&metric=vulnerabilities" alt="">](https://sonar.elhub.cloud/dashboard?id=no.elhub.devxp%3Adevxp-arcanist)
+[<img src="https://sonar.elhub.cloud/api/project_badges/measure?project=no.elhub.devxp%3Adevxp-arcanist&metric=coverage" alt="">](https://sonar.elhub.cloud/dashboard?id=no.elhub.devxp%3Adevxp-arcanist)
 
 
 ## Table of Contents
@@ -26,7 +26,7 @@
 
 ## About
 
-**dev-tools-arcanist** provides some useful extensions to arcanist used at Elhub.
+**devxp-arcanist** provides some useful extensions to arcanist used at Elhub.
 
 ## Getting Started
 
@@ -36,7 +36,7 @@
 
 ### Installation
 
-Elhub employees should install **dev-tools-arcanist** using the [dev-tools](https://github.com/elhub/dev-tools)
+Elhub employees should install **devxp-arcanist** using the [devxp-linux](https://github.com/elhub/devxp-linux)
 installation suite.
 
 If you cannot use that, you need to add this repository to your local machine and tell Arcanist to load the extension.
@@ -68,18 +68,18 @@ N/A.
 
 ## Roadmap
 
-See the [open issues](https://jira.elhub.cloud/issues/?jql=project%20%3D%20TD%20AND%20component%20%3D%20dev-tools-arcanist%20AND%20resolution%20%3D%20Unresolved) for a list of proposed features (and known issues).
+See the [open issues](https://jira.elhub.cloud/issues/?jql=project%20%3D%20TD%20AND%20component%20%3D%20devxp-arcanist%20AND%20resolution%20%3D%20Unresolved) for a list of proposed features (and known issues).
 
 ## Contributing
 
 Contributing, issues and feature requests are welcome. See the
-[Contributing](https://github.com/elhub/dev-tools-arcanist/blob/main/CONTRIBUTING.md) file.
+[Contributing](https://github.com/elhub/devxp-arcanist/blob/main/CONTRIBUTING.md) file.
 
 ## Owners
 
 This project is developed by [Elhub](https://elhub.no). For the specific development group responsible for this
-code, see the [Codeowners](https://github.com/elhub/dev-tools-arcanist/blob/main/CODEOWNERS) file.
+code, see the [Codeowners](https://github.com/elhub/devxp-arcanist/blob/main/CODEOWNERS) file.
 
 ## License
 
-This project is [MIT](https://github.com/elhub/dev-tools-arcanist/blob/main/LICENSE.md) licensed.
+This project is [MIT](https://github.com/elhub/devxp-arcanist/blob/main/LICENSE.md) licensed.

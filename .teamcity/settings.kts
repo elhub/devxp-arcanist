@@ -11,11 +11,11 @@ import no.elhub.common.build.configuration.ProjectType
 import no.elhub.common.build.configuration.SonarScan
 import no.elhub.common.build.configuration.constants.GlobalTokens
 
-version = "2020.2"
+version = "2021.1"
 
 project {
 
-    val projectId = "no.elhub.tools:dev-tools-arcanist"
+    val projectId = "no.elhub.devxp:devxp-arcanist"
     val projectType = ProjectType.GENERIC
     val artifactoryRepository = "elhub-bin-release-local"
 

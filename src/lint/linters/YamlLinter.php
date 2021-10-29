@@ -36,7 +36,7 @@ final class YamlLinter extends ArcanistExternalLinter {
   }
 
   public function getInstallInstructions() {
-    return pht('Use the dev-tools script to install this linter.');
+    return pht('Use the devxp-linux script to install this linter.');
   }
 
   protected function getMandatoryFlags() {
