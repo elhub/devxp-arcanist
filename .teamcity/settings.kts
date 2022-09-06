@@ -14,8 +14,8 @@ import no.elhub.devxp.build.configuration.constants.GlobalTokens
 version = "2022.04"
 
 project {
-
-    val projectId = "no.elhub.devxp:devxp-arcanist"
+    val projectName = "devxp-arcanist"
+    val projectId = "no.elhub.devxp:$projectName"
     val projectType = ProjectType.GENERIC
     val artifactoryRepository = "elhub-bin-release-local"
 
@@ -23,52 +23,47 @@ project {
         param("teamcity.ui.settings.readOnly", "true")
     }
 
-    val buildChain = sequential {
+    val sonarScanConfig = SonarScan.Config(
+        vcsRoot = DslContext.settingsRoot,
+        type = projectType,
+        sonarId = projectId,
+        sonarProjectSources = "src"
+    )
 
-        buildType(
-            SonarScan(
-                SonarScan.Config(
-                    vcsRoot = DslContext.settingsRoot,
-                    type = projectType,
-                    sonarId = projectId,
-                    sonarProjectSources = "src"
-                )
-            )
+    val sonarScan = SonarScan(sonarScanConfig)
+
+    val githubAuth = SshAgent({
+        teamcitySshKey = "teamcity_github_rsa"
+        param("secure:passphrase", GlobalTokens.githubSshPassphrase)
+    })
+
+    val release = AutoRelease(
+        AutoRelease.Config(
+            vcsRoot = DslContext.settingsRoot,
+            type = projectType,
+            repository = artifactoryRepository
         )
-
-        val githubAuth = SshAgent({
-            teamcitySshKey = "teamcity_github_rsa"
-            param("secure:passphrase", GlobalTokens.githubSshPassphrase)
-        })
-
-        buildType(
-            AutoRelease(
-                AutoRelease.Config(
-                    vcsRoot = DslContext.settingsRoot,
-                    type = projectType,
-                    sshAgent = githubAuth
-                )
-            ) {
-                triggers {
-                    vcs {
-                        branchFilter = "+:<default>"
-                        quietPeriodMode = VcsTrigger.QuietPeriodMode.USE_DEFAULT
-                    }
-                }
+    ) {
+        triggers {
+            vcs {
+                branchFilter = "+:<default>"
+                quietPeriodMode = VcsTrigger.QuietPeriodMode.USE_DEFAULT
             }
-        )
+        }
 
+        dependencies {
+            snapshot(sonarScan) { }
+        }
     }
 
-    buildChain.buildTypes().forEach { buildType(it) }
+    listOf(sonarScan, release).forEach { buildType(it) }
 
     buildType(
         CodeReview(
             CodeReview.Config(
                 vcsRoot = DslContext.settingsRoot,
                 type = projectType,
-                sonarId = projectId,
-                sonarProjectSources = "src"
+                sonarScanConfig = sonarScanConfig,
             )
         )
     )
