@@ -1,4 +1,4 @@
-# arcanist
+ arcanist
 
 [<img src="https://img.shields.io/badge/repo-github-blue" alt="">](https://github.com/elhub/devxp-arcanist)
 [<img src="https://img.shields.io/badge/issues-jira-orange" alt="">](https://jira.elhub.cloud/issues/?jql=project%20%3D%20%22Team%20Dev%22%20AND%20component%20%3D%20devxp-arcanist%20AND%20status%20!%3D%20Done)

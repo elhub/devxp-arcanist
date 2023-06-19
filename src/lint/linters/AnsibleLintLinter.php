@@ -53,13 +53,17 @@ final class AnsibleLintLinter extends ArcanistExternalLinter {
         return pht('Install ansible-lint using `%s`.', 'pip install ansible-lint');
     }
 
+    public function shouldExpectCommandErrors() {
+      return true;
+    }
+
     protected function parseLinterOutput($path, $err, $stdout, $stderr) {
         $lines = phutil_split_lines($stdout, false);
 
         $messages = array();
         foreach ($lines as $line) {
             $matches = null;
-            if (!preg_match('/^(.*?):(\d+): (\S+) (.*)$/', $line, $matches)) {
+            if (!preg_match('/^(.*?):(\d+):\s*(.*):\s*(.*)$/', $line, $matches)) {
                 continue;
             }
             foreach ($matches as $key => $match) {
